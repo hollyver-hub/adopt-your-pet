@@ -1,0 +1,249 @@
+:root {
+  --cor-primaria: #FFF5F5;
+  --cor-secundaria: #F7D6D0;
+  --cor-terciaria: #E2B4BD;
+  --cor-quaternaria: #4A4A4A;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--cor-primaria);
+}
+
+/* --- HEADER --- */
+.header {
+  background-color: var(--cor-quaternaria);
+  color: var(--cor-primaria);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.header-title p {
+  color: var(--cor-secundaria);
+  font-size: 13px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-modo {
+  background-color: transparent;
+  color: var(--cor-secundaria);
+  border: 2px solid var(--cor-secundaria);
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-modo:hover {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-quaternaria);
+}
+
+.btn-modo.ativo {
+  background-color: var(--cor-terciaria);
+  color: var(--cor-quaternaria);
+  border-color: var(--cor-terciaria);
+}
+
+/* --- MAIN LAYOUT --- */
+.main {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- CALENDAR --- */
+.calendar {
+  flex: 2;
+  background-color: #ffffff;
+  border: 2px dashed var(--cor-terciaria);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s;
+  min-height: 400px;
+}
+
+.calendar:hover {
+  border-color: var(--cor-quaternaria);
+}
+
+.dropzone {
+  text-align: center;
+  color: var(--cor-quaternaria);
+}
+
+.icone-pdf {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.btn-selecionar {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid var(--cor-quaternaria);
+  color: var(--cor-quaternaria);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-selecionar:hover {
+  background-color: var(--cor-quaternaria);
+  color: var(--cor-primaria);
+}
+
+/* --- HUB --- */
+.hub {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hub h2 {
+  font-size: 18px;
+  color: var(--cor-quaternaria);
+  border-bottom: 2px solid var(--cor-secundaria);
+  padding-bottom: 10px;
+}
+
+.hub-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(74, 74, 74, 0.05);
+}
+
+.hub-card p {
+  font-size: 14px;
+  color: var(--cor-quaternaria);
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.input-paginas {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--cor-terciaria);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--cor-quaternaria);
+  background-color: var(--cor-primaria);
+}
+
+.btn-acao {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--cor-terciaria);
+  color: var(--cor-quaternaria);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+
+.btn-acao:hover {
+  opacity: 0.85;
+}
+
+.btn-adicionar-texto {
+  margin-bottom: 10px;
+}
+
+/* --- ESTILO DAS MINIATURAS DOS PDFs --- */
+.lista-miniaturas {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto; /* Permite rolagem horizontal se houver muitos arquivos */
+  padding: 10px;
+  max-width: 100%;
+  justify-content: center;
+  flex-wrap: wrap; /* Permite que as miniaturas quebrem para a próxima linha se não houver espaço suficiente */
+}
+
+.miniatura-pdf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--cor-primaria);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--cor-terciaria);
+  box-shadow: 0 4px 6px rgba(74, 74, 74, 0.1);
+}
+
+.miniatura-pdf iframe {
+  width: 200px;
+  height: 250px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* O pointer-events: none impede que o usuário mexa no PDF do iframe, mantendo-o apenas visual */
+  pointer-events: none; 
+}
+
+.miniatura-pdf p {
+  font-size: 11px;
+  margin-top: 10px;
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Corta nomes muito longos com "..." */
+  color: var(--cor-quaternaria);
+  font-weight: 500;
+}
+
+.miniatura-pdf.assinatura iframe {
+  width: 250px;
+  height: 360px;
+}
+
+.miniatura-pdf.assinatura .pdf-wrapper {
+  width: 250px;
+  height: 360px;
+}
+
+.miniatura-pdf.assinatura p {
+  max-width: 240px;
+}
+
+/* --- FOOTER --- */
+.footer {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-quaternaria);
+  text-align: center;
+  padding: 15px;
+  font-size: 12px;
+  font-weight: 500;
+}
