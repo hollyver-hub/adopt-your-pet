@@ -13,13 +13,11 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: #121212;
   color: #f4f4f0;
-}
-
-.retro-container {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
 
 /* =========================================
    2. NAVEGAÇÃO (NAV BAR)
@@ -388,6 +386,9 @@ body {
 }
 
 .pet-location {
+  display: flex;
+  gap: 0.3rem;
+  margin-right: 0.5rem;
   font-size: 0.9rem;
   color: #ccc;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { IoLocationOutline } from "react-icons/io5";
 
 const petsVitrine = [
   {
@@ -8,7 +9,7 @@ const petsVitrine = [
     especie: "Cachorra",
     idade: "2 anos",
     local: "Penedo - AL",
-    foto: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80",
+    foto: "https://images.pexels.com/photos/31040636/pexels-photo-31040636.jpeg?cs=srgb&dl=pexels-magda-ehlers-pexels-31040636.jpg&fm=jpg",
     descricao: "Muito dócil, adora brincar e já é castrada."
   },
   {
@@ -17,16 +18,16 @@ const petsVitrine = [
     especie: "Gato",
     idade: "1 ano",
     local: "Penedo - AL",
-    foto: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80",
+    foto: "https://tse2.mm.bing.net/th/id/OIP.HNQ0V4YZdQv8HIsjYIGWgAHaHa?r=0&w=500&h=500&rs=1&pid=ImgDetMain&o=7&rm=3",
     descricao: "Calmo, independente e ideal para apartamentos."
   },
   {
     id: 3,
     nome: "Bob",
     especie: "Cachorro",
-    idade: "4 meses",
+    idade: "3 meses",
     local: "Neópolis - SE",
-    foto: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80",
+    foto: "https://tse1.mm.bing.net/th/id/OIP.dhhGqI8b4U6XvqwpsxFJqgHaH6?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     descricao: "Filhote cheio de energia e muito curioso."
   },
   {
@@ -35,7 +36,7 @@ const petsVitrine = [
     especie: "Gata",
     idade: "2 anos",
     local: "Coruripe - AL",
-    foto: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=600&q=80",
+    foto: "https://i.pinimg.com/736x/24/7b/84/247b84e0c9eda3bf60970d4d63fbd10c.jpg",
     descricao: "Carinhosa, adora tirar cochilos ao sol."
   },
   {
@@ -44,20 +45,55 @@ const petsVitrine = [
     especie: "Cachorro",
     idade: "3 anos",
     local: "Maceió - AL",
-    foto: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=600&q=80",
+    foto: "https://adotar.com.br/upload/2017-12/animais_imagem315531.jpg?w=700&format=webp",
     descricao: "Protetor, leal e ótimo para espaços grandes."
+  },
+  {
+    id: 6,
+    nome: "Jubileia",
+    especie: "Cachorra",
+    idade: "9 anos",
+    local: "Santana do São Francisco - SE",
+    foto: "https://www.jornalpopulacional.com.br/storage/capaOriginal/noticia/1748541241.png",
+    descricao: "Carismática, adora companhia e é ótimo com crianças."
+  },
+  {
+    id: 7,
+    nome: "Luluzinha",
+    especie: "Cachorra",
+    idade: "3 meses",
+    local: "Saúde - SE",
+    foto: "https://i.redd.it/semuruj1on341.jpg",
+    descricao: "Gosta de nadar, brincar e é muito sociável com outros pets."
+  },
+  {
+    id: 8,
+    nome: "Jurema",
+    especie: "Cachorra",
+    idade: "9 meses",
+    local: "Carro Quebrado - SE",
+    foto: "https://uploads.metropoles.com/wp-content/uploads/2023/05/02122221/Casal-viraliza-ao-decidir-adotar-dois-tamanduas-4.jpg",
+    descricao: "Tímida, mas muito carinhosa quando se sente segura."
+  },
+  {
+    id: 9,
+    nome: "Leona",
+    especie: "Cachorra",
+    idade: "1 ano",
+    local: "Targo - RU",
+    foto: "https://wl-genial.cf.tsp.li/resize/728x/jpg/766/3b9/438a9b54edb141ef4985f88a19.jpg",
+    descricao: "Gosta muito de passear durante o dia e também ama praia"
   }
 ];
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 850);
   
-  // NOVO: Controla qual card está com a sanfona aberta
   const [expandedPetId, setExpandedPetId] = useState(null);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    const handleResize = () => setIsMobile(window.innerWidth <= 850);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -92,11 +128,11 @@ function App() {
   };
 
   return (
-    <div className="retro-container">
+    <div className="body">
       
       <section className="hero-section">
         <nav className="nav-bar">
-          <div className="logo">PetLove.</div>
+          <div className="logo">AdoptYourPet. </div>
           <div className="nav-links">
             <a href="#sobre">Sobre</a>
             <a href="#passos">Passo a Passo</a>
@@ -104,7 +140,7 @@ function App() {
           </div>
         </nav>
         <div className="hero-content">
-          <span className="hero-subtitle">EST. 2026 // PENEDO-AL</span>
+          <span className="hero-subtitle">PENEDO-AL</span>
           <h1>UM NOVO AMIGO<br /> MUDA TUDO.</h1>
           <p>Resgate, cuidado e conexão. Descubra como transformamos vidas na nossa comunidade.</p>
         </div>
@@ -174,7 +210,10 @@ function App() {
                     <span className="pet-age">{pet.idade}</span>
                   </div>
                   
-                  <p className="pet-location">📍 {pet.local}</p>
+                  <p className="pet-location">
+                    <IoLocationOutline />
+                    {pet.local}
+                  </p>
                   <p className="pet-desc">{pet.descricao}</p>
                   
                   <button 
@@ -202,9 +241,8 @@ function App() {
       </section>
 
       <footer className="footer-section">
-        <p className="copy">&copy; 2026 PetLove. Desenvolvido para Programação Web I.</p>
+        <p className="copy">&copy; 2026 AdoptYourPet. Desenvolvido para Programação Web I.</p>
       </footer>
-
     </div>
   );
 }

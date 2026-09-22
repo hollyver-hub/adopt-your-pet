@@ -1,16 +1,57 @@
-# React + Vite
+# AdoptYourPet
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> Sistema web desenvolvido para conectar abrigos, protetores e pessoas interessadas na adoção responsável de animais de estimação.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Sobre o Projeto
 
-## React Compiler
+O **AdoptYourPet** nasceu com o propósito de resolver um problema real na comunidade: a dificuldade na divulgação e no processo de adoção de animais resgatados. O sistema funciona como uma vitrine digital interativa, centralizando informações sobre pets disponíveis, facilitando o primeiro contato entre adotantes e tutores de forma ágil e intuitiva.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## Funcionalidades
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+* **Apresentação Institucional:** Seção "Sobre" explicando a missão do projeto na comunidade.
+* **Guia Passo a Passo:** Explicação detalhada do processo de adoção para orientar novos tutores.
+* **Vitrine Interativa de Pets:** Carrossel responsivo para visualização dos animais disponíveis, com fotos, idades, localizações e descrições.
+* **Formulário de Adoção Integrado:** Cada card de pet possui expansão para um formulário rápido de intenção de adoção (Nome, WhatsApp e Rotina).
+* **Design Responsivo:** Adaptado perfeitamente tanto para telas de computadores quanto para dispositivos móveis.
+
+---
+
+## Tecnologias Utilizadas
+
+Este projeto foi construído utilizando as seguintes tecnologias:
+
+* **React (v18+)** - Biblioteca JavaScript para construção da interface de usuário.
+* **JavaScript (ES6+)** - Linguagem de programação principal.
+* **HTML5 e CSS3** - Estruturação e estilização personalizada com layout moderno.
+* **React Icons** - Biblioteca de ícones vetoriais.
+
+---
+
+## Como Executar o Projeto
+
+Siga os passos abaixo para rodar o projeto localmente na sua máquina:
+
+### Pré-requisitos
+Certifique-se de ter o **Node.js** e o **npm** instalados em seu computador.
+
+### Instalação
+
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/hollyver-hub/adopt-your-pet.git
+
+2. Entre na pasta do projeto:
+   ```bash
+   cd adopt-your-pet
+
+3. Instale as dependências:
+   ```bash
+   npm install
+
+4. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
