@@ -1,0 +1,165 @@
+.pet-card {
+  background-color: #24211e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, border-color 0.2s;
+  width: 100%;
+  max-width: 320px;
+}
+
+.pet-card:hover {
+  transform: translateY(-6px);
+  border-color: #e65f2b;
+}
+
+.pet-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+}
+
+.pet-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(10%);
+}
+
+.pet-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #121212;
+  color: #f4f4f0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 2px;
+}
+
+.pet-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex: 1;
+}
+
+.pet-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pet-title-row h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: -0.5px;
+}
+
+.pet-age {
+  font-size: 0.85rem;
+  color: #e65f2b;
+  font-weight: 700;
+}
+
+.pet-location {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.pet-desc {
+  font-size: 0.9rem;
+  color: #999;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.card-btn {
+  background-color: transparent;
+  color: #f4f4f0;
+  border: 1px solid #f4f4f0;
+  padding: 0.7rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.card-btn:hover {
+  background-color: #e65f2b;
+  border-color: #e65f2b;
+  color: #fff;
+}
+
+/* Formulário Accordion interno do card */
+.accordion-form {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  animation: slideDown 0.3s ease-out forwards;
+  transform-origin: top;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: scaleY(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.accordion-form input, 
+.accordion-form textarea {
+  width: 100%;
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f4f4f0;
+  padding: 0.8rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.accordion-form input:focus, 
+.accordion-form textarea:focus {
+  border-color: #e65f2b;
+}
+
+.accordion-submit {
+  background-color: #e65f2b;
+  color: #fff;
+  border: none;
+  padding: 0.8rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+
+.accordion-submit:hover {
+  background-color: #d04e1e;
+}
