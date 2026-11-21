@@ -1,0 +1,205 @@
+.filter-bar-container {
+  background-color: #1a1715;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.filter-top-row {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 1rem;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  font-size: 1.2rem;
+  color: #888;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f4f4f0;
+  padding: 0.85rem 2.5rem 0.85rem 2.8rem;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: #e65f2b;
+  box-shadow: 0 0 0 2px rgba(230, 95, 43, 0.25);
+}
+
+.search-input::placeholder {
+  color: #777;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 0.8rem;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 50%;
+  transition: color 0.2s ease;
+}
+
+.clear-search-btn:hover {
+  color: #e65f2b;
+}
+
+.size-select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 0 0.8rem;
+}
+
+.size-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.size-select {
+  background: transparent;
+  color: #f4f4f0;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  padding: 0.85rem 0;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+}
+
+.size-select option {
+  background-color: #1a1715;
+  color: #f4f4f0;
+}
+
+/* Bottom chips row */
+.filter-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 1rem;
+}
+
+.species-chips-group {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.species-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #bbb;
+  padding: 0.55rem 1rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.species-chip:hover {
+  border-color: #e65f2b;
+  color: #f4f4f0;
+}
+
+.species-chip.chip-active {
+  background-color: #e65f2b;
+  border-color: #e65f2b;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(230, 95, 43, 0.3);
+}
+
+.chip-icon {
+  font-size: 0.95rem;
+}
+
+.filter-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.results-count {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.results-count strong {
+  color: #e65f2b;
+}
+
+.clear-filters-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: 1px dashed rgba(230, 95, 43, 0.5);
+  color: #e65f2b;
+  padding: 0.45rem 0.85rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-filters-btn:hover {
+  background-color: rgba(230, 95, 43, 0.15);
+  border-style: solid;
+}
+
+@media (max-width: 768px) {
+  .filter-top-row {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+

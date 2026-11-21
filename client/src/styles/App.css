@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #121212;
+  color: #f4f4f0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Spinner global e utilitários */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #e65f2b;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.retry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #e65f2b;
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1.2rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+}
+
+.retry-btn:hover {
+  background-color: #d04e1e;
+  transform: translateY(-2px);
+}
+
+/* Banner de incentivo para Como Ajudar (na Home) */
+.cta-help-banner {
+  background: linear-gradient(135deg, #231e1a 0%, #151312 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-help-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-help-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-help-tag {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #e65f2b;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.cta-help-content h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.8rem;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: #f4f4f0;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+.cta-help-content p {
+  font-size: 1.1rem;
+  color: #aaa;
+  line-height: 1.6;
+  max-width: 650px;
+  margin-bottom: 2.2rem;
+}
+
+.cta-help-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cta-help-btn-primary,
+.cta-help-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.cta-help-btn-primary {
+  background-color: #e65f2b;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(230, 95, 43, 0.3);
+}
+
+.cta-help-btn-primary:hover {
+  background-color: #d04e1e;
+  transform: translateY(-2px);
+}
+
+.cta-help-btn-secondary {
+  background-color: transparent;
+  color: #f4f4f0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cta-help-btn-secondary:hover {
+  border-color: #e65f2b;
+  color: #e65f2b;
+}
+
+@media (max-width: 768px) {
+  .cta-help-content h2 {
+    font-size: 2rem;
+  }
+}
