@@ -49,7 +49,6 @@
   line-height: 1.6;
 }
 
-/* Grade de Pilares */
 .help-pillars-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -119,7 +118,6 @@
   flex-grow: 1;
 }
 
-/* PIX Box */
 .pix-box {
   background-color: #121212;
   border: 1px dashed rgba(230, 95, 43, 0.4);
@@ -203,7 +201,6 @@
   line-height: 1.2;
 }
 
-/* Perks list */
 .pillar-perks {
   list-style: none;
   padding: 0;
@@ -246,7 +243,6 @@
   color: #fff;
 }
 
-/* Badges de voluntariado */
 .volunteer-badges {
   display: flex;
   gap: 0.4rem;
@@ -309,7 +305,6 @@
   flex-shrink: 0;
 }
 
-/* FAQ Section */
 .faq-section {
   max-width: 860px;
   margin: 0 auto;

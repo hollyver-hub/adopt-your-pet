@@ -16,7 +16,7 @@ export function PetCard({ pet, isExpanded, onToggleForm, onSubmitForm }) {
     rotina: ''
   });
   const [submitting, setSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('idle'); // 'idle' | 'success' | 'error'
+  const [submitStatus, setSubmitStatus] = useState('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputChange = (e) => {
@@ -56,14 +56,11 @@ export function PetCard({ pet, isExpanded, onToggleForm, onSubmitForm }) {
       }
 
       setSubmitStatus('success');
-      // Limpa os campos controlados após o envio com sucesso
       setFormData({
         nome_completo: '',
         whatsapp: '',
         rotina: ''
       });
-
-      // Fecha o accordion suavemente após 3 segundos
       setTimeout(() => {
         setSubmitStatus('idle');
         if (onToggleForm) onToggleForm(pet.id);

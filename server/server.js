@@ -9,12 +9,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 const app = express();
-
-// Middlewares
 app.use(cors());
 app.use(express.json());
-
-// Pool de conexão com MySQL
 const pool = mysql.createPool({
   host: process.env.DB_HOST || "localhost",
   port: Number(process.env.DB_PORT) || 3306,
@@ -26,11 +22,6 @@ const pool = mysql.createPool({
   queueLimit: 0,
 });
 
-/**
- * Converte o registro bruto do banco para o formato esperado pelo front-end:
- * - vacinado, castrado e vermifugado convertidos para booleans reais
- * - temperamento garantido como array de strings
- */
 function formatPet(row) {
   let temperamento = row.temperamento;
 
@@ -62,8 +53,6 @@ function formatPet(row) {
     criado_em: row.criado_em,
   };
 }
-
-// GET /pets - Retorna todos os pets cadastrados
 app.get("/pets", async (req, res) => {
   try {
     const [rows] = await pool.query("SELECT * FROM pets ORDER BY id ASC");
@@ -74,8 +63,6 @@ app.get("/pets", async (req, res) => {
     res.status(500).json({ error: "Erro ao buscar pets no banco de dados." });
   }
 });
-
-// GET /pets/:id - Retorna um pet específico por ID
 app.get("/pets/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -89,12 +76,8 @@ app.get("/pets/:id", async (req, res) => {
     res.status(500).json({ error: "Erro ao consultar pet no banco de dados." });
   }
 });
-
-// POST /solicitacoes - Registra solicitação de adoção
 app.post("/solicitacoes", async (req, res) => {
   const { pet_id, nome_completo, whatsapp, rotina } = req.body;
-
-  // Validação dos campos obrigatórios
   if (!pet_id || !nome_completo?.trim() || !whatsapp?.trim() || !rotina?.trim()) {
     return res.status(400).json({
       error: "Campos obrigatórios ausentes: pet_id, nome_completo, whatsapp e rotina devem ser preenchidos.",
@@ -102,7 +85,6 @@ app.post("/solicitacoes", async (req, res) => {
   }
 
   try {
-    // Verifica se o pet existe
     const [pets] = await pool.query("SELECT id, nome FROM pets WHERE id = ?", [pet_id]);
     if (pets.length === 0) {
       return res.status(404).json({ error: "Pet informado não foi encontrado." });

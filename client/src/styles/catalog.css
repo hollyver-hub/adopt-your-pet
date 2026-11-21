@@ -50,7 +50,6 @@
   line-height: 1.6;
 }
 
-/* Toast de feedback */
 .catalog-toast {
   padding: 1rem 1.4rem;
   border-radius: 6px;
@@ -98,7 +97,6 @@
   align-items: center;
 }
 
-/* Loading e Error States no Catálogo */
 .catalog-loading-state {
   display: flex;
   flex-direction: column;

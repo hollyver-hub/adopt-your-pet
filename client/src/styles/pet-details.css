@@ -8,7 +8,6 @@
   margin: 0 auto;
 }
 
-/* Nav & Breadcrumbs */
 .details-nav-row {
   display: flex;
   justify-content: space-between;
@@ -67,7 +66,6 @@
   font-weight: 700;
 }
 
-/* Grid principal em 2 colunas */
 .pet-details-grid {
   display: grid;
   grid-template-columns: 460px 1fr;
@@ -76,7 +74,6 @@
   margin-bottom: 5rem;
 }
 
-/* Coluna da Imagem */
 .pet-details-gallery {
   display: flex;
   flex-direction: column;
@@ -136,7 +133,6 @@
   border-radius: 4px;
 }
 
-/* Card de Saúde */
 .health-check-card {
   background-color: #1a1715;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -208,7 +204,6 @@
   border-color: #e65f2b;
 }
 
-/* Coluna de Informações */
 .pet-details-info {
   display: flex;
   flex-direction: column;
@@ -289,7 +284,6 @@
   font-size: 0.95rem;
 }
 
-/* Formulário de Adoção na Tela de Detalhes */
 .details-form-card {
   background-color: #1a1715;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -383,7 +377,6 @@
   transform: translateY(-2px);
 }
 
-/* Sucesso do Form */
 .details-form-success {
   background-color: #162619;
   border: 1px solid #2e7d32;
@@ -432,7 +425,6 @@
   border-color: #e65f2b;
 }
 
-/* Not found */
 .details-loading-box {
   display: flex;
   flex-direction: column;
@@ -494,7 +486,6 @@
   font-size: 0.85rem;
 }
 
-/* Seção Outros Pets */
 .more-pets-section {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 3.5rem;

@@ -13,8 +13,6 @@ export function PetsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 850);
   const [expandedPetId, setExpandedPetId] = useState(null);
-
-  // Carrega pets reais da API
   const loadPets = useCallback(async () => {
     try {
       const data = await getPets();

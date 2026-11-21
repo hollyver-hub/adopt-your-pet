@@ -22,8 +22,6 @@ export function PetDetails() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [otherPets, setOtherPets] = useState([]);
-
-  // Estados controlados do formulário de adoção
   const [formData, setFormData] = useState({
     nome_completo: '',
     whatsapp: '',
@@ -36,8 +34,6 @@ export function PetDetails() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formError, setFormError] = useState('');
   const [shareFeedback, setShareFeedback] = useState(false);
-
-  // Carrega os detalhes do pet e sugestões da API
   const loadPetData = useCallback(async () => {
     try {
       const petData = await getPetById(id);
@@ -51,7 +47,6 @@ export function PetDetails() {
           const allPets = await getPets();
           setOtherPets(allPets.filter((p) => p.id !== Number(id)).slice(0, 3));
         } catch {
-          // Ignora erro nas sugestões
         }
       }
     } catch (err) {
@@ -81,7 +76,6 @@ export function PetDetails() {
               setOtherPets(allPets.filter((p) => p.id !== Number(id)).slice(0, 3));
             }
           } catch {
-            // Ignora erro nas sugestões
           }
         }
       })
@@ -96,15 +90,11 @@ export function PetDetails() {
       isMounted = false;
     };
   }, [id]);
-
-  // Manipular inputs controlados
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (formError) setFormError('');
   };
-
-  // Enviar formulário para a rota POST /solicitacoes
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -128,7 +118,6 @@ export function PetDetails() {
     try {
       await createSolicitacao(payload);
       setFormSubmitted(true);
-      // Limpa formulário após envio com sucesso
       setFormData({
         nome_completo: '',
         whatsapp: '',
@@ -143,8 +132,6 @@ export function PetDetails() {
       setSubmitting(false);
     }
   };
-
-  // Compartilhar página
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
@@ -158,8 +145,6 @@ export function PetDetails() {
       setTimeout(() => setShareFeedback(false), 2500);
     }
   };
-
-  // Estado de Carregamento
   if (loading) {
     return (
       <main className="pet-details-page">
@@ -170,8 +155,6 @@ export function PetDetails() {
       </main>
     );
   }
-
-  // Caso o pet não seja encontrado ou ocorra erro
   if (error || !pet) {
     return (
       <main className="pet-details-page">
@@ -197,7 +180,6 @@ export function PetDetails() {
   return (
     <main className="pet-details-page">
       <div className="pet-details-container">
-        {/* Breadcrumb & Botão Voltar */}
         <nav className="details-nav-row" aria-label="Navegação">
           <button type="button" onClick={() => navigate('/adocao')} className="back-link">
             <IoArrowBack />
@@ -212,18 +194,13 @@ export function PetDetails() {
             <li className="active" aria-current="page">{pet.nome}</li>
           </ol>
         </nav>
-
-        {/* Card Principal de Detalhes em 2 Colunas */}
         <div className="pet-details-grid">
-          {/* Coluna da Imagem */}
           <div className="pet-details-gallery">
             <div className="details-img-wrapper">
               <img src={pet.foto} alt={`Foto ampliada de ${pet.nome}`} className="details-main-img" />
               <span className="details-badge-species">{pet.especie}</span>
               {pet.porte && <span className="details-badge-porte">{pet.porte}</span>}
             </div>
-
-            {/* Checklist de Saúde */}
             <div className="health-check-card">
               <h4>
                 <IoShieldCheckmarkOutline className="health-header-icon" />
@@ -244,15 +221,11 @@ export function PetDetails() {
                 </li>
               </ul>
             </div>
-
-            {/* Botão de Compartilhar */}
             <button type="button" className="share-pet-btn" onClick={handleShare}>
               <IoShareSocialOutline />
               <span>{shareFeedback ? 'Link copiado!' : 'Compartilhar perfil de ' + pet.nome}</span>
             </button>
           </div>
-
-          {/* Coluna de Informações e Formulário */}
           <div className="pet-details-info">
             <header className="pet-info-header">
               <div className="pet-name-line">
@@ -265,8 +238,6 @@ export function PetDetails() {
                 <span>{pet.local}</span>
               </p>
             </header>
-
-            {/* Tags de Temperamento */}
             {pet.temperamento && pet.temperamento.length > 0 && (
               <div className="pet-tags-group">
                 {pet.temperamento.map((tag, idx) => (
@@ -276,14 +247,10 @@ export function PetDetails() {
                 ))}
               </div>
             )}
-
-            {/* História do Pet */}
             <div className="pet-story-block">
               <h3>História & Personalidade</h3>
               <p>{pet.historia || pet.descricao}</p>
             </div>
-
-            {/* Formulário de Adoção Completo */}
             <section className="details-adopt-section">
               {formSubmitted ? (
                 <div className="details-form-success" role="alert">
@@ -405,8 +372,6 @@ export function PetDetails() {
             </section>
           </div>
         </div>
-
-        {/* Seção: Conheça Também Outros Pets */}
         {otherPets.length > 0 && (
           <section className="more-pets-section">
             <div className="more-pets-header">

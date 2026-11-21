@@ -22,9 +22,7 @@ export function FilterBar({
 
   return (
     <div className="filter-bar-container">
-      {/* Top search & size row */}
       <div className="filter-top-row">
-        {/* Search input */}
         <div className="search-input-wrapper">
           <IoSearchOutline className="search-icon" aria-hidden="true" />
           <input
@@ -47,8 +45,6 @@ export function FilterBar({
             </button>
           )}
         </div>
-
-        {/* Size selector dropdown */}
         <div className="size-select-wrapper">
           <label htmlFor="size-select" className="size-label">Porte:</label>
           <select
@@ -64,8 +60,6 @@ export function FilterBar({
           </select>
         </div>
       </div>
-
-      {/* Species filter chips row */}
       <div className="filter-bottom-row">
         <div className="species-chips-group" role="group" aria-label="Filtrar por espécie">
           {speciesList.map((item) => {
@@ -85,8 +79,6 @@ export function FilterBar({
             );
           })}
         </div>
-
-        {/* Status / Clear filters */}
         <div className="filter-meta">
           <span className="results-count">
             <strong>{totalResults}</strong> {totalResults === 1 ? 'pet disponível' : 'pets disponíveis'}

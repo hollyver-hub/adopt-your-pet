@@ -8,7 +8,6 @@ export function Footer() {
     <footer className="site-footer">
       <div className="footer-container">
         <div className="footer-grid">
-          {/* Brand info */}
           <div className="footer-col brand-col">
             <div className="footer-logo">
               <IoPawOutline className="footer-logo-icon" />
@@ -28,8 +27,6 @@ export function Footer() {
               </a>
             </div>
           </div>
-
-          {/* Navigation Links */}
           <div className="footer-col">
             <h4 className="footer-title">Navegação</h4>
             <ul className="footer-links">
@@ -40,8 +37,6 @@ export function Footer() {
               <li><a href="/#passos">Passo a Passo de Adoção</a></li>
             </ul>
           </div>
-
-          {/* Ways to help */}
           <div className="footer-col">
             <h4 className="footer-title">Como Ajudar</h4>
             <ul className="footer-links">
@@ -51,8 +46,6 @@ export function Footer() {
               <li><Link to="/como-ajudar#doacao-materiais">Doação de Ração e Remédios</Link></li>
             </ul>
           </div>
-
-          {/* Contact info */}
           <div className="footer-col">
             <h4 className="footer-title">Contato & Região</h4>
             <ul className="footer-contact-list">

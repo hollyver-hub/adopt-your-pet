@@ -71,7 +71,6 @@ export function HowToHelp() {
   return (
     <main className="help-page">
       <div className="help-container">
-        {/* Header Inspiracional */}
         <header className="help-hero">
           <span className="help-badge">
             <IoHeartOutline />
@@ -82,10 +81,7 @@ export function HowToHelp() {
             Nem todo mundo pode adotar, mas todo mundo pode ajudar a transformar o destino de animais resgatados em Penedo e região. Escolha a forma que mais combina com você:
           </p>
         </header>
-
-        {/* Grade de 4 Pilares de Ajuda */}
         <div className="help-pillars-grid">
-          {/* Pilar 1: Doação PIX */}
           <section id="pix" className="help-card pillar-pix">
             <div className="pillar-header">
               <div className="pillar-icon-box">
@@ -139,8 +135,6 @@ export function HowToHelp() {
               </div>
             </div>
           </section>
-
-          {/* Pilar 2: Lar Temporário */}
           <section id="lar-temporario" className="help-card">
             <div className="pillar-header">
               <div className="pillar-icon-box">
@@ -170,8 +164,6 @@ export function HowToHelp() {
               <span>Quero ser Lar Temporário</span>
             </a>
           </section>
-
-          {/* Pilar 3: Voluntariado */}
           <section id="voluntariado" className="help-card">
             <div className="pillar-header">
               <div className="pillar-icon-box">
@@ -212,8 +204,6 @@ export function HowToHelp() {
               </p>
             )}
           </section>
-
-          {/* Pilar 4: Doação de Suprimentos */}
           <section id="doacao-materiais" className="help-card">
             <div className="pillar-header">
               <div className="pillar-icon-box">
@@ -240,8 +230,6 @@ export function HowToHelp() {
             </div>
           </section>
         </div>
-
-        {/* Seção FAQ Interativo */}
         <section className="faq-section">
           <div className="faq-header">
             <div className="faq-badge">

@@ -40,7 +40,6 @@ body {
   flex-direction: column;
 }
 
-/* Spinner global e utilitários */
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -80,7 +79,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Banner de incentivo para Como Ajudar (na Home) */
 .cta-help-banner {
   background: linear-gradient(135deg, #231e1a 0%, #151312 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
