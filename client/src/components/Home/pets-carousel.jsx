@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { IoArrowBack, IoArrowForward, IoPawOutline, IoRefreshOutline, IoAlertCircleOutline } from 'react-icons/io5';
-import { getPets, createSolicitacao } from '../services/api.js';
-import { PetCard } from './pet-card.jsx';
-import '../styles/pets-carousel.css';
+import { getPets, createSolicitacao } from '../../services/api.js';
+import { PetCard } from '../pet-card.jsx';
+import '../../styles/Home/pets-carousel.css';
 
 export function PetsCarousel() {
   const [pets, setPets] = useState([]);

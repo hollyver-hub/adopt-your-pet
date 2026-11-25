@@ -1,4 +1,4 @@
-import '../styles/about.css';
+import '../../styles/Home/about.css';
 
 export function About() {
   return (

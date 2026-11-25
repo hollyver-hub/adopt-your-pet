@@ -1,0 +1,130 @@
+{
+  "info": {
+    "_postman_id": "a8f3d1e2-b4c5-4d6e-8f9a-0b1c2d3e4f5a",
+    "name": "AdoptYourPet API",
+    "description": "Collection completa para testar e executar as rotas da API REST do projeto AdoptYourPet.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Pets",
+      "item": [
+        {
+          "name": "1. Listar todos os pets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pets"
+              ]
+            },
+            "description": "Retorna todos os pets cadastrados no banco de dados MySQL."
+          },
+          "response": []
+        },
+        {
+          "name": "2. Buscar pet por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pets/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pets",
+                "1"
+              ]
+            },
+            "description": "Retorna os detalhes de um pet específico pelo ID."
+          },
+          "response": []
+        },
+        {
+          "name": "3. Cadastrar novo pet",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Bidu\",\n  \"especie\": \"Cachorro\",\n  \"sexo\": \"Macho\",\n  \"porte\": \"Pequeno\",\n  \"idade\": \"1 ano\",\n  \"local\": \"Penedo - AL\",\n  \"foto\": \"https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=700&q=80\",\n  \"descricao\": \"Dócil, brincalhão e cheio de energia para alegrar a casa.\",\n  \"vacinado\": true,\n  \"castrado\": true,\n  \"vermifugado\": true,\n  \"temperamento\": [\n    \"Dócil\",\n    \"Brincalhão\",\n    \"Sociável\"\n  ],\n  \"historia\": \"Bidu foi resgatado e acolhido com muito carinho. Agora procura um lar amoroso e responsável.\",\n  \"status\": \"disponivel\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pets"
+              ]
+            },
+            "description": "Insere um novo animal no banco de dados MySQL."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Solicitações de Adoção",
+      "item": [
+        {
+          "name": "4. Registrar solicitação de adoção",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pet_id\": 1,\n  \"nome_completo\": \"Ana Clara Santos\",\n  \"whatsapp\": \"(82) 99876-5432\",\n  \"rotina\": \"Moro em casa murada e segura, trabalho em regime home office e tenho disponibilidade para passeios diários.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/solicitacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "solicitacoes"
+              ]
+            },
+            "description": "Registra uma solicitação de adoção vinculada ao pet_id."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

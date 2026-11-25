@@ -19,6 +19,24 @@ export async function getPetById(id) {
   return response.json();
 }
 
+export async function createPet(data) {
+  const response = await fetch(`${API_BASE_URL}/pets`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  const responseData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(responseData.error || 'Erro ao cadastrar pet.');
+  }
+
+  return responseData;
+}
+
 export async function createSolicitacao(data) {
   const response = await fetch(`${API_BASE_URL}/solicitacoes`, {
     method: 'POST',
@@ -36,4 +54,3 @@ export async function createSolicitacao(data) {
 
   return responseData;
 }
-

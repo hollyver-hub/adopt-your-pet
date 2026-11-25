@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import {
-  IoHeartOutline,
   IoCopyOutline,
   IoCheckmarkDone,
   IoHomeOutline,
@@ -72,8 +71,7 @@ export function HowToHelp() {
     <main className="help-page">
       <div className="help-container">
         <header className="help-hero">
-          <span className="help-badge">
-            <IoHeartOutline />
+          <span className="steps-tag">
             Corrente do Bem
           </span>
           <h1>Como Ajudar Nosso Projeto</h1>

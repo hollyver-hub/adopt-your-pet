@@ -37,7 +37,6 @@ function formatPet(row) {
     id: Number(row.id),
     nome: row.nome,
     especie: row.especie,
-    tipo: row.tipo || (row.especie?.toLowerCase().includes("gato") ? "gato" : "cachorro"),
     sexo: row.sexo || "Não informado",
     porte: row.porte || "Médio",
     idade: row.idade,
@@ -53,6 +52,7 @@ function formatPet(row) {
     criado_em: row.criado_em,
   };
 }
+
 app.get("/pets", async (req, res) => {
   try {
     const [rows] = await pool.query("SELECT * FROM pets ORDER BY id ASC");
@@ -63,6 +63,7 @@ app.get("/pets", async (req, res) => {
     res.status(500).json({ error: "Erro ao buscar pets no banco de dados." });
   }
 });
+
 app.get("/pets/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -76,6 +77,89 @@ app.get("/pets/:id", async (req, res) => {
     res.status(500).json({ error: "Erro ao consultar pet no banco de dados." });
   }
 });
+
+app.post("/pets", async (req, res) => {
+  const {
+    nome,
+    especie,
+    sexo,
+    porte,
+    idade,
+    local,
+    foto,
+    descricao,
+    vacinado,
+    castrado,
+    vermifugado,
+    temperamento,
+    historia,
+    status,
+  } = req.body;
+
+  if (
+    !nome?.trim() ||
+    !especie?.trim() ||
+    !idade?.trim() ||
+    !local?.trim() ||
+    !foto?.trim() ||
+    !descricao?.trim()
+  ) {
+    return res.status(400).json({
+      error:
+        "Campos obrigatórios ausentes: nome, especie, idade, local, foto e descricao são necessários.",
+    });
+  }
+
+  let temperamentoFinal = [];
+  if (Array.isArray(temperamento)) {
+    temperamentoFinal = temperamento;
+  } else if (typeof temperamento === "string" && temperamento.trim()) {
+    try {
+      const parsed = JSON.parse(temperamento);
+      temperamentoFinal = Array.isArray(parsed) ? parsed : [temperamento.trim()];
+    } catch {
+      temperamentoFinal = temperamento
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
+    }
+  }
+
+  try {
+    const [result] = await pool.query(
+      `INSERT INTO pets (nome, especie, sexo, porte, idade, local, foto, descricao, vacinado, castrado, vermifugado, temperamento, historia, status)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        nome.trim(),
+        especie.trim(),
+        sexo?.trim() || "Não informado",
+        porte?.trim() || "Médio",
+        idade.trim(),
+        local.trim(),
+        foto.trim(),
+        descricao.trim(),
+        Boolean(vacinado),
+        Boolean(castrado),
+        Boolean(vermifugado),
+        JSON.stringify(temperamentoFinal),
+        historia?.trim() || descricao.trim(),
+        status?.trim() || "disponivel",
+      ]
+    );
+
+    const [rows] = await pool.query("SELECT * FROM pets WHERE id = ?", [result.insertId]);
+
+    res.status(201).json({
+      id: result.insertId,
+      message: "Pet cadastrado com sucesso!",
+      pet: formatPet(rows[0]),
+    });
+  } catch (err) {
+    console.error("Erro ao cadastrar pet:", err);
+    res.status(500).json({ error: "Erro ao salvar pet no banco de dados." });
+  }
+});
+
 app.post("/solicitacoes", async (req, res) => {
   const { pet_id, nome_completo, whatsapp, rotina } = req.body;
   if (!pet_id || !nome_completo?.trim() || !whatsapp?.trim() || !rotina?.trim()) {

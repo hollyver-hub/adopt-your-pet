@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { IoPawOutline, IoHeartOutline } from 'react-icons/io5';
-import '../styles/hero.css';
+import '../../styles/Home/hero.css';
 
 export function HeroSection() {
   return (
@@ -20,7 +20,6 @@ export function HeroSection() {
 
             <div className="hero-btn-group">
               <Link to="/adocao" className="hero-primary-btn">
-                <IoPawOutline className="btn-icon" />
                 <span>Encontrar meu Pet</span>
               </Link>
               <Link to="/como-ajudar" className="hero-secondary-btn">

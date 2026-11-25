@@ -1,4 +1,4 @@
-import '../styles/step-step.css';
+import '../../styles/Home/step-step.css';
 
 export function Steps() {
   return (

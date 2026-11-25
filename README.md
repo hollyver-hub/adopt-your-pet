@@ -140,7 +140,6 @@ CREATE TABLE IF NOT EXISTS pets (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,
   especie VARCHAR(50) NOT NULL,
-  tipo ENUM('cachorro', 'gato', 'outro') NOT NULL DEFAULT 'cachorro',
   sexo VARCHAR(20) DEFAULT 'Não informado',
   porte VARCHAR(30) DEFAULT 'Médio',
   idade VARCHAR(50) NOT NULL,
@@ -188,7 +187,6 @@ A API roda por padrão em `http://localhost:3001`.
       "id": 1,
       "nome": "Mel",
       "especie": "Cachorra",
-      "tipo": "cachorro",
       "sexo": "Fêmea",
       "porte": "Médio",
       "idade": "2 anos",
@@ -211,7 +209,60 @@ A API roda por padrão em `http://localhost:3001`.
 - **Descrição**: Retorna o perfil individual do pet.
 - **Códigos**: `200 OK` em caso de sucesso; `404 Not Found` caso o ID não exista.
 
-### 3. Registrar solicitação de adoção
+### 3. Cadastrar novo pet
+- **Endpoint**: `POST /pets`
+- **Headers**: `Content-Type: application/json`
+- **Campos Obrigatórios**: `nome`, `especie`, `idade`, `local`, `foto`, `descricao`
+- **Campos Opcionais**: `sexo`, `porte`, `vacinado`, `castrado`, `vermifugado`, `temperamento` (array ou string), `historia`, `status`
+- **Corpo da Requisição**:
+  ```json
+  {
+    "nome": "Bidu",
+    "especie": "Cachorro",
+    "sexo": "Macho",
+    "porte": "Pequeno",
+    "idade": "1 ano",
+    "local": "Penedo - AL",
+    "foto": "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=700&q=80",
+    "descricao": "Dócil, brincalhão e cheio de energia para alegrar a casa.",
+    "vacinado": true,
+    "castrado": true,
+    "vermifugado": true,
+    "temperamento": ["Dócil", "Brincalhão", "Sociável"],
+    "historia": "Bidu foi resgatado e acolhido com muito carinho.",
+    "status": "disponivel"
+  }
+  ```
+- **Exemplo de Resposta (`201 Created`)**:
+  ```json
+  {
+    "id": 13,
+    "message": "Pet cadastrado com sucesso!",
+    "pet": {
+      "id": 13,
+      "nome": "Bidu",
+      "especie": "Cachorro",
+      "sexo": "Macho",
+      "porte": "Pequeno",
+      "idade": "1 ano",
+      "local": "Penedo - AL",
+      "foto": "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=700&q=80",
+      "descricao": "Dócil, brincalhão e cheio de energia para alegrar a casa.",
+      "vacinado": true,
+      "castrado": true,
+      "vermifugado": true,
+      "temperamento": ["Dócil", "Brincalhão", "Sociável"],
+      "historia": "Bidu foi resgatado e acolhido com muito carinho.",
+      "status": "disponivel",
+      "criado_em": "2026-11-25T00:41:33.000Z"
+    }
+  }
+  ```
+- **Códigos de Erro**:
+  - `400 Bad Request`: Campos obrigatórios ausentes ou vazios.
+  - `500 Internal Server Error`: Falha ao inserir o pet no banco de dados.
+
+### 4. Registrar solicitação de adoção
 - **Endpoint**: `POST /solicitacoes`
 - **Headers**: `Content-Type: application/json`
 - **Corpo da Requisição**:
@@ -236,6 +287,23 @@ A API roda por padrão em `http://localhost:3001`.
   - `400 Bad Request`: Dados obrigatórios faltando ou vazios.
   - `404 Not Found`: Pet com o `pet_id` informado não encontrado.
   - `500 Internal Server Error`: Falha na conexão ou execução no MySQL.
+
+---
+
+## 📬 Testando com o Postman
+
+O projeto inclui o arquivo **`AdoptYourPet.postman_collection.json`** na raiz do repositório (e na pasta `server/`) com todas as rotas configuradas.
+
+### Como importar e executar no Postman:
+1. Abra o **Postman**.
+2. Clique no botão **Import** (canto superior esquerdo).
+3. Selecione o arquivo **`AdoptYourPet.postman_collection.json`**.
+4. A collection **AdoptYourPet API** será importada com a variável de ambiente `baseUrl` configurada para `http://localhost:3001`.
+5. Com a API rodando (`cd server && npm start`), clique nas requisições da collection e clique em **Send** para testar imediatamente cada rota:
+   - `1. Listar todos os pets` (`GET /pets`)
+   - `2. Buscar pet por ID` (`GET /pets/1`)
+   - `3. Cadastrar novo pet` (`POST /pets`)
+   - `4. Registrar solicitação de adoção` (`POST /solicitacoes`)
 
 ---
 
@@ -320,6 +388,7 @@ Certifique-se de que o servidor MySQL está em execução. O banco `adocao_pets`
 - `npm start`: Inicia o servidor Node.js com o arquivo `server.js`.
 - `npm run dev`: Inicia o servidor com o modo observador (`node --watch server.js`).
 - `npm run seed`: Executa a sincronização dos 12 registros de pets no MySQL.
+- `npm run reset-db`: Reseta o banco de dados (recria as tabelas no novo formato unificado e popula os dados).
 
 ---
 

@@ -3,7 +3,6 @@ import { getPets, createSolicitacao } from '../services/api.js';
 import { FilterBar } from '../components/FilterBar.jsx';
 import { PetGrid } from '../components/PetGrid.jsx';
 import {
-  IoPawOutline,
   IoCheckmarkCircleOutline,
   IoAlertCircleOutline,
   IoClose,
@@ -97,13 +96,13 @@ export function Catalog() {
         (pet.descricao && pet.descricao.toLowerCase().includes(term));
       let matchSpecies = true;
       if (selectedSpecies !== 'all') {
-        const petTipo = (pet.tipo || pet.especie || '').toLowerCase();
+        const petEspecie = (pet.especie || '').toLowerCase();
         if (selectedSpecies === 'cachorro') {
-          matchSpecies = petTipo.includes('cachorr') || petTipo.includes('cão');
+          matchSpecies = petEspecie.includes('cachorr') || petEspecie.includes('cão');
         } else if (selectedSpecies === 'gato') {
-          matchSpecies = petTipo.includes('gat');
+          matchSpecies = petEspecie.includes('gat');
         } else if (selectedSpecies === 'outros') {
-          matchSpecies = !petTipo.includes('cachorr') && !petTipo.includes('gat') && !petTipo.includes('cão');
+          matchSpecies = !petEspecie.includes('cachorr') && !petEspecie.includes('gat') && !petEspecie.includes('cão');
         }
       }
       const matchSize =
@@ -120,8 +119,8 @@ export function Catalog() {
     <main className="catalog-page">
       <div className="catalog-container">
         <header className="catalog-header">
-          <div className="catalog-badge">
-            <IoPawOutline />
+          <div className="steps-tag">
+    
             <span>Adoção com Amor</span>
           </div>
           <h1>Catálogo de Amiguinhos</h1>
